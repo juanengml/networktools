@@ -2,8 +2,8 @@ from os import popen,system
 import pyping
 
 def local_ip():
-   ip = popen("ifconfig | grep 'inet '").read().split(" ")[9]
-   return ip
+   data = popen("sudo ifconfig wlan0").read().split("\n")[1].split(" ")[9]
+   return data
 
 def test_cloud():
  status = False

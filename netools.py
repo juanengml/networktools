@@ -5,6 +5,14 @@ def local_ip():
    data = popen("sudo ifconfig wlan0").read().split("\n")[1].split(" ")[9]
    return data
 
+def ping(name,ip):
+   checar = pyping.ping(ip)
+   print checar.avg_rtt
+   if checar.avg_rtt:
+       return name,ip
+   else:
+       return "Not","Connect"
+
 def test_cloud():
  status = False
  b1 = "broker.mqttdashboard.com"

@@ -3,7 +3,11 @@ import pyping
 
 def local_ip():
    data = popen("sudo ifconfig wlan0").read().split("\n")[1].split(" ")[9]
-   return data
+   if data == '':
+       data = popen("ifconfig wlan0 | grep 192").read().split()[1].split(":")[1]
+       return data
+   else:
+       return data
 
 def ping(name,ip):
    checar = pyping.ping(ip)

@@ -2,12 +2,17 @@ from os import popen,system
 import pyping
 
 def local_ip():
-   data = popen("sudo ifconfig wlan0").read().split("\n")[1].split(" ")[9]
-   if data == '':
+    try:
+     data = popen("sudo ifconfig wlan0").read().split("\n")[1].split(" ")[9]
+     if data == '':
        data = popen("ifconfig wlan0 | grep 192").read().split()[1].split(":")[1]
        return data
-   else:
+     else:
        return data
+     
+    except:
+         data = popen("sudo ifconfig | grep inet ").read().split("\n")[2].split()[1]
+         return data  
 
 def ping(name,ip):
    checar = pyping.ping(ip)

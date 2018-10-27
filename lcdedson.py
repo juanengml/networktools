@@ -10,7 +10,7 @@ def msg(name,ip):
     Lcd.clear()
     Lcd.setCursor(0,0) # Inicia o Cursor na posicao x = 0,y = 0
     Lcd.write(name)
-    Lcd.setCursor(0,1) # Inicia o Cursor na posicao x = 0,y = 0
+    Lcd.setCursor(1,0) # Inicia o Cursor na posicao x = 0,y = 0
     Lcd.write(ip)
 
 while True:

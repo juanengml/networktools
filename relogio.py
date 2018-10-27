@@ -6,7 +6,7 @@ import Adafruit_GPIO.SPI as SPI
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
-import netools
+from datetime import datetime
 
 DC = 23
 RST = 24
@@ -25,13 +25,14 @@ def msg(text):
  draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
  font = ImageFont.load_default()
  draw.text((1,10), text, font=font)
+# draw.text((2,20), "Quero Caldo",font=font)
+# draw.text((3,30), "De Mocoto", font=font)
  disp.image(image)
  disp.display()
 
 
 while  True:
  print('Press Ctrl-C to quit.')
- ip = netools.local_ip()
- time.sleep(1)
- msg(ip)
- 
+ relogio = "%.8s" % str(datetime.now()).split()[1]
+ msg(relogio)
+ time.sleep(1) 

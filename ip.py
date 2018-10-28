@@ -22,11 +22,14 @@ draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
 font = ImageFont.load_default()
  
 
-def msg(name,ip):
+def msg(name1,name2,ip1,ip2):
+ disp.clear()
  disp.clear()
  disp.display()
- draw.text((1,10), name, font=font)
- draw.text((1,20), ip, font=font)
+ draw.text((1,5), "  "+name1, font=font)
+ draw.text((1,15), ip1, font=font)
+ draw.text((1,27), "  "+name2, font=font)
+ draw.text((1,37), ip2, font=font)
  disp.image(image)
  disp.display()
 
@@ -35,10 +38,11 @@ while  True:
  print('Press Ctrl-C to quit.')
  ip = netools.local_ip()
  iot1 = netools.ping("Edson","192.168.100.13")
- msg("Pi0",ip)
- time.sleep(2)
- msg(iot1[0],iot1[1])
- time.sleep(2)
+ time.sleep(0.5)
+ msg("Pi0",iot1[0],ip,iot1[1])
+ time.sleep(0.5)
+# msg(iot1[0],iot1[1])
+# time.sleep(0.5)
  
 
  
